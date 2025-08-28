@@ -5,19 +5,31 @@
   <title>Mingzhe Chou</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    :root{--max:900px}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6}
+    :root{--max:980px}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6;color:#1a1a1a}
+    a{color:#0b57d0;text-decoration:none} a:hover{text-decoration:underline}
     header{border-bottom:1px solid #eee}
-    nav{max-width:var(--max);margin:0 auto;display:flex;gap:24px;align-items:center;padding:16px}
-    nav a{text-decoration:none;color:#222;font-weight:600}
-    main{max-width:var(--max);margin:32px auto;padding:0 16px}
+    nav{max-width:var(--max);margin:0 auto;display:flex;gap:24px;align-items:center;padding:14px 16px}
+    nav a{font-weight:600;color:#222}
+    main{max-width:var(--max);margin:28px auto;padding:0 16px}
     h1{margin:.2em 0}
-    h2{margin:1.2em 0 .4em}
+    h2{margin:1.2em 0 .2em}
+    h3{margin:1.2em 0 .4em}
     .muted{color:#666}
-    .paper{margin:.8em 0}
-    footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
+
+    /* pills */
     .pill{display:inline-block;border:1px solid #ddd;border-radius:999px;padding:.15em .6em;margin-right:.5em;font-size:.9em;color:#444}
-    @media (max-width:640px){nav{gap:12px}}
+
+    /* research item: left image, right text */
+    .item{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start;margin:18px 0;padding:12px;border:1px solid #eee;border-radius:12px}
+    .thumb{aspect-ratio:4/3;background:#f7f7f7;border:1px solid #eee;border-radius:10px;overflow:hidden}
+    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .meta b{font-weight:700}
+    .meta .venue{color:#555;font-style:italic}
+    .meta .links a{margin-right:10px}
+    @media (max-width:720px){.item{grid-template-columns:1fr}}
+    footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
   </style>
 </head>
 <body>
@@ -25,15 +37,15 @@
     <nav>
       <a href="#home">Home</a>
       <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
-      <a href="#working-papers">Working Papers</a>
     </nav>
   </header>
+
   <main>
+    <!-- HOME -->
     <section id="home">
       <h1>Mingzhe Chou</h1>
       <div class="muted">Department of Economics, University of Chicago · mincerchou@gmail.com</div>
-      <p>I am a PhD student in Economics at the University of Chicago. My research focuses on urban and spatial economics, public economics, and optimal taxation.</p>
+      <p>I am a PhD student in Economics. My research focuses on urban/spatial economics, public economics, and optimal taxation.</p>
       <p>
         <a class="pill" href="https://scholar.google.com/citations?user=PS_CX0AAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         <a class="pill" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=7676487" target="_blank" rel="noopener">SSRN</a>
@@ -41,28 +53,67 @@
         <a class="pill" href="/files/cv.pdf" target="_blank" rel="noopener">CV</a>
       </p>
     </section>
+
+    <!-- RESEARCH -->
     <section id="research">
       <h2>Research</h2>
-      <p>My ongoing projects include: studying welfare losses from farmland protection in China; analyzing the effects of ideological high school curriculum reforms on household finance and risk behaviour; and developing matching models with maxmin agents.</p>
-    </section>
-    <section id="publications">
-      <h2>Publications</h2>
-      <div class="paper">
-        <b>Example Publication Title</b> (with Coauthors). <i>Journal Name</i>, Year.<br>
-        <a href="/files/example-paper.pdf" target="_blank" rel="noopener">PDF</a>
-      </div>
-    </section>
-    <section id="working-papers">
-      <h2>Working Papers</h2>
-      <div class="paper">
-        <b>Example Working Paper Title</b> (with Coauthors).<br>
-        <a href="/files/example-wp.pdf" target="_blank" rel="noopener">PDF</a>
-      </div>
+
+      <!-- Working Papers -->
+      <h3>Working Paper</h3>
+
+      <!-- 示例条目 1 -->
+      <article class="item">
+        <div class="thumb">
+          <!-- 把你的配图放到 /images/research/wp-1.jpg -->
+          <img src="/images/research/wp-1.jpg" alt="Working paper figure">
+        </div>
+        <div class="meta">
+          <b>Paper Title Goes Here</b> (with Coauthor A, Coauthor B)
+          <div class="venue">Working paper, 2025</div>
+          <p>
+            One–two sentences explaining the main idea/result. You can add one more line for context or method.
+          </p>
+          <div class="links">
+            <a href="/files/wp-1.pdf" target="_blank" rel="noopener">PDF</a>
+            <a href="#" target="_blank" rel="noopener">Slides</a>
+            <a href="#" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 再复制 .item 作为更多 working paper 条目 -->
+
+      <!-- Working Program -->
+      <h3>Working Program</h3>
+
+      <!-- 示例条目 2 -->
+      <article class="item">
+        <div class="thumb">
+          <!-- 配图：/images/research/wprog-1.jpg -->
+          <img src="/images/research/wprog-1.jpg" alt="Working program figure">
+        </div>
+        <div class="meta">
+          <b>Project Title Goes Here</b>
+          <div class="venue">Research program / in progress</div>
+          <p>
+            Brief description of the ongoing program (goals, setting, early findings or planned design).
+          </p>
+          <div class="links">
+            <a href="#" target="_blank" rel="noopener">Prospectus</a>
+            <a href="#" target="_blank" rel="noopener">Pre-analysis</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 再复制 .item 作为更多 working program 条目 -->
+
     </section>
   </main>
+
   <footer>
     © <span id="y"></span> Mingzhe Chou
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
+
