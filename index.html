@@ -31,7 +31,8 @@
       background:#fff;
     }
     .thumb{aspect-ratio:4/3;background:#f7f7f7;border:1px solid #eee;border-radius:10px;overflow:hidden}
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    /* 改这里：统一完整显示，不裁剪 */
+    .thumb img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
 
     .meta .title{font-weight:700;color:inherit;text-decoration:none}
     .meta .title:hover{text-decoration:underline}
@@ -50,11 +51,9 @@
       .item{grid-template-columns:1fr}
     }
     footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
-        .thumb.contain img {
-      object-fit: contain;
-      background: #fff;
-    }
 
+    /* 可留存，不影响效果（已全局 contain） */
+    .thumb.contain img { object-fit: contain; background: #fff; }
   </style>
 </head>
 <body>
@@ -116,10 +115,9 @@
 
       <!-- THIRD WP -->
       <article class="item">
-          <div class="thumb contain">
-  <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
-          </div>
-
+        <div class="thumb contain">
+          <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
+        </div>
         <div class="meta">
           <a class="title" href="/paper/Writing_Sample_Fertilizer.pdf" target="_blank" rel="noopener">
             Land Titling, Selection, and Fertilizer Use Efficiency in China
@@ -128,7 +126,7 @@
           <p class="summary">
 Excess fertilizer use is a major source of non point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference in differences methods with multiple periods, linked to a household panel from the National Fixed Point Survey and environmental data. Three findings emerge. First, clarifying land tenure reduces chemical fertilizer intensity at the household level by about 8.35%, and it induces shifts toward organic inputs, both on the extensive and the intensive margins. Second, a decomposition shows that roughly 60% of the decline is an incentive effect from secure tenure and about 40% is a reallocation effect as land moves toward more productive operators. Third, county level nitrous oxide emissions fall by about 2.82% after certification, closely matching a 2.92% reduction predicted from the estimated decline in fertilizer intensity, and water quality indicators improve in treated areas. Correspondingly, the reduction in fertilizer use is accompanied by significant improvements in related water quality indicators, particularly a decline in COD<sub>Mn</sub> and NH<sub>4</sub>-N. The results indicate that property rights reforms can mitigate agricultural pollution by correcting resource misallocation and by changing input choices within farms.
 </p>
- <button class="toggle" type="button" hidden>Read More</button>
+          <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
 
@@ -170,15 +168,14 @@ Excess fertilizer use is a major source of non point pollution in agriculture. T
 
           if(!wide) return;
 
-const h = imgBox.clientHeight;
-const cap = Math.round(h * 0.85);   // 图高的 85% 当上限
-if(para.scrollHeight > cap){
-  para.style.maxHeight = cap + 'px';
-  para.classList.add('collapsed');
-  btn.hidden = false;
-}
-btn.dataset.clamp = cap;
-
+          const h = imgBox.clientHeight;
+          const cap = Math.round(h * 0.85);   // 图高的 85% 当上限
+          if(para.scrollHeight > cap){
+            para.style.maxHeight = cap + 'px';
+            para.classList.add('collapsed');
+            btn.hidden = false;
+          }
+          btn.dataset.clamp = cap;
         });
       }
 
@@ -204,3 +201,4 @@ btn.dataset.clamp = cap;
   </script>
 </body>
 </html>
+
