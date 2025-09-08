@@ -15,28 +15,40 @@
     main{max-width:var(--max);margin:28px auto;padding:0 16px}
     h1{margin:.2em 0}
     h2{margin:1.2em 0 .2em}
-    h3{margin:1.2em 0 .4em}
     .muted{color:#666}
     .pill{display:inline-block;border:1px solid #ddd;border-radius:999px;padding:.15em .6em;margin-right:.5em;font-size:.9em;color:#444}
-    /* 左图右文卡片 */
-    .item{
-  display:grid;
-  grid-template-columns:350px 1fr; /* 图稍宽 */
-  gap:24px; /* 左右间距增加 */
-  align-items:start;
-  margin:18px 0;
-  padding:12px;
-  border:1px solid #eee;
-  border-radius:12px;
-  background:#fff;
-}
 
+    /* 卡片布局 */
+    .item{
+      display:grid;
+      grid-template-columns:350px minmax(0,1fr);
+      gap:24px;
+      align-items:start;
+      margin:18px 0;
+      padding:12px;
+      border:1px solid #eee;
+      border-radius:12px;
+      background:#fff;
+    }
     .thumb{aspect-ratio:4/3;background:#f7f7f7;border:1px solid #eee;border-radius:10px;overflow:hidden}
     .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-    .meta b{font-weight:700}
+
+    .meta .title{font-weight:700;color:inherit;text-decoration:none}
+    .meta .title:hover{text-decoration:underline}
     .meta .venue{color:#555;font-style:italic}
-    .meta .links a{margin-right:10px}
-    @media (max-width:720px){.item{grid-template-columns:1fr}}
+
+    /* 摘要折叠 */
+    .summary{overflow:hidden;position:relative;transition:max-height .2s ease}
+    .summary.collapsed::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:3em;
+      background:linear-gradient(transparent,#fff)
+    }
+    .toggle{margin-top:.4rem;padding:.25rem .6rem;border:1px solid #ddd;border-radius:999px;background:#fff;cursor:pointer;font-size:.9rem}
+    .toggle[hidden]{display:none}
+
+    @media (max-width:720px){
+      .item{grid-template-columns:1fr}
+    }
     footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
   </style>
 </head>
@@ -49,99 +61,136 @@
   </header>
 
   <main>
-   <!-- HOME -->
-<section id="home">
-  <h1>Mingzhe (Mincer) Chou</h1>
-  <div class="muted">Harris School of Public Policy, University of Chicago · mincerchou@gmail.com</div>
-  <p>I am a Master student in Economics. I have broad research interests, my current project focuses on public economics, urban/spatial economics and agriculture economics.</p>
-  <p>
-    <!-- Google sites for future -->
-    <!-- <a class="pill" href="https://scholar.google.com/citations?user=PS_CX0AAAAAJ" target="_blank" rel="noopener">Google Scholar</a> -->
-    <a class="pill" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=7676487" target="_blank" rel="noopener">SSRN</a>
-    <a class="pill" href="https://github.com/MincerChou" target="_blank" rel="noopener">GitHub</a>
-    <a class="pill" href="/files/cv.pdf" target="_blank" rel="noopener">CV</a>
-  </p>
-</section>
+    <!-- HOME -->
+    <section id="home">
+      <h1>Mingzhe (Mincer) Chou</h1>
+      <div class="muted">Harris School of Public Policy, University of Chicago · mincerchou@gmail.com</div>
+      <p>I am a Master student in Economics. I have broad research interests; my current project focuses on public economics, urban/spatial economics, and agricultural economics.</p>
+      <p>
+        <!-- <a class="pill" href="https://scholar.google.com/citations?user=PS_CX0AAAAAJ" target="_blank" rel="noopener">Google Scholar</a> -->
+        <a class="pill" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=7676487" target="_blank" rel="noopener">SSRN</a>
+        <a class="pill" href="https://github.com/MincerChou" target="_blank" rel="noopener">GitHub</a>
+        <a class="pill" href="/files/cv.pdf" target="_blank" rel="noopener">CV</a>
+      </p>
+    </section>
 
-<!-- RESEARCH -->
-<section id="research">
-  <h2>Research</h2>
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2>Research</h2>
+      <h3>Working Paper</h3>
 
-  <h3>Working Paper</h3>
-
-  <!-- FIRST WP -->
-  <article class="item">
-    <div class="thumb">
-      <!-- 把 martinez.png 放到 /images/research/martinez.png -->
-      <img src="/images/f_martinez.png" alt="Incentives, Manipulation, and Growth – figure">
-    </div>
-    <div class="meta">
-      <b>Incentives, Manipulation, and Growth: Performance Metrics and Bureaucratic Behavior in China</b>
-      <div class="venue">Working paper, 2024</div>
-      <p>How promotion incentives shape both reported and real economic performance in Chinese bureaucrats? Using the age rule that governs eligibility for promotion, We estimates a sharp regression discontinuity. To separate reporting from substance, We validate reported growth with night time lights and construct lights implied real growth. Leaders just below the threshold report higher GDP and also raise real activity. The discontinuity implies about a four percentage point increase in reported growth and a similar rise in real growth. Manipulation is concentrated among unconnected officials and in economically lagging places. </p>
-      <div class="links">
-        <a href="/paper/GDP_Manipulation.pdf" target="_blank" rel="noopener">PDF</a>
-      </div>
-    </div>
-  </article>
-
-  <!-- SECOND WP -->
-<article class="item">
-  <div class="thumb">
-    <img src="/images/cohortstager.png" alt="Ideological Curriculum Reform – figure">
-  </div>
-  <div class="meta">
-    <b>Ideological Curriculum Reform, Financial Literacy, and Long-Run Consequences of Political Education</b>
-    <div class="venue">Working paper, 2025</div>
-    <p>
-      This paper studies the economic consequences of ideologically oriented schooling in an authoritarian setting. Between 2004 and 2010, China introduced a new high school politics curriculum with the explicit goal of shaping students’ ideology. Using the staggered rollout of the reform across provinces and comparing adjacent student cohorts, I estimate its causal effects on financial knowledge, preferences, and behavior. Three main findings emerge. First, exposure to the reformed curriculum durably reduces financial literacy, measured by standardized questions on basic economic and financial concepts. Second, affected students exhibit higher relative risk aversion, lower participation in equity markets, and a reduced propensity to engage in entrepreneurship. Third, placebo analyses show no similar patterns for cohorts that did not attend high school, and no declines in language or mathematics scores, ruling out changes in overall student ability or instruction quality as explanations. These results highlight the welfare costs of politicized education and show how state control over curricular content can generate persistent economic distortions.
-    </p>
-    <div class="links">
-      <a href="/paper/Curriculum_drafting.pdf" target="_blank" rel="noopener">PDF</a>
-    </div>
-  </div>
-</article>
-
-  <!-- Third WP -->
-<article class="item">
-  <div class="thumb">
-    <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
-  </div>
-  <div class="meta">
-    <b>Land Titling, Selection, and Fertilizer Use Efficiency in China</b>
-    <div class="venue">Working paper, 2025</div>
-    <p>
-      Excess fertilizer use is a major source of non point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference in differences methods with multiple periods, linked to a household panel from the National Fixed Point Survey and environmental data. Three findings emerge. First, clarifying land tenure reduces chemical fertilizer intensity at the household level by about 8.35\%, and it induces shifts toward organic inputs, both on the extensive and the intensive margins. Second, a decomposition shows that roughly 60\% of the decline is an incentive effect from secure tenure and about 40\% is a reallocation effect as land moves toward more productive operators. Third, county level nitrous oxide emissions fall by about 2.82\% after certification, closely matching a 2.92\% reduction predicted from the estimated decline in fertilizer intensity, and water quality indicators improve in treated areas. Correspondingly, the reduction in fertilizer use is accompanied by significant improvements in related water quality indicators, particularly a decline in CODMn and $\text{NH}_{4}\text{-N}$. The results indicate that property rights reforms can mitigate agricultural pollution by correcting resource misallocation and by changing input choices within farms.
-      <a href="/paper/Writing_Sample_Fertilizer.pdf" target="_blank" rel="noopener">PDF</a>
-    </div>
-  </div>
-</article>
-
-      <!-- Working Program -->
-      <h3>Working Program</h3>
-
+      <!-- FIRST WP -->
       <article class="item">
         <div class="thumb">
-          <!-- /images/research/wprog-1.jpg -->
-          <img src="/images/research/wprog-1.jpg" alt="Working program figure">
+          <img src="/images/f_martinez.png" alt="Incentives, Manipulation, and Growth – figure">
         </div>
         <div class="meta">
-          <b>Project Title Goes Here</b>
-          <div class="venue">Research program · in progress</div>
-          <p>Brief description of the program goals, setting, and planned design or early findings.</p>
-          <div class="links">
-            <a href="#" target="_blank" rel="noopener">Prospectus</a>
-            <a href="#" target="_blank" rel="noopener">Pre-analysis</a>
-          </div>
+          <a class="title" href="/paper/GDP_Manipulation.pdf" target="_blank" rel="noopener">
+            Incentives, Manipulation, and Growth: Performance Metrics and Bureaucratic Behavior in China
+          </a>
+          <div class="venue">Working paper, 2024</div>
+          <p class="summary">How promotion incentives shape both reported and real economic performance in Chinese bureaucrats? Using the age rule that governs eligibility for promotion, we estimate a sharp regression discontinuity. To separate reporting from substance, we validate reported growth with night time lights and construct lights-implied real growth. Leaders just below the threshold report higher GDP and also raise real activity. The discontinuity implies about a four percentage point increase in reported growth and a similar rise in real growth. Manipulation is concentrated among unconnected officials and in economically lagging places.</p>
+          <button class="toggle" type="button" hidden>展开</button>
         </div>
       </article>
 
+      <!-- SECOND WP -->
+      <article class="item">
+        <div class="thumb">
+          <img src="/images/cohortstager.png" alt="Ideological Curriculum Reform – figure">
+        </div>
+        <div class="meta">
+          <a class="title" href="/paper/Curriculum_drafting.pdf" target="_blank" rel="noopener">
+            Ideological Curriculum Reform, Financial Literacy, and Long-Run Consequences of Political Education
+          </a>
+          <div class="venue">Working paper, 2025</div>
+          <p class="summary">This paper studies the economic consequences of ideologically oriented schooling in an authoritarian setting. Between 2004 and 2010, China introduced a new high school politics curriculum with the explicit goal of shaping students’ ideology. Using the staggered rollout of the reform across provinces and comparing adjacent student cohorts, I estimate its causal effects on financial knowledge, preferences, and behavior. Three main findings emerge. First, exposure to the reformed curriculum durably reduces financial literacy, measured by standardized questions on basic economic and financial concepts. Second, affected students exhibit higher relative risk aversion, lower participation in equity markets, and a reduced propensity to engage in entrepreneurship. Third, placebo analyses show no similar patterns for cohorts that did not attend high school, and no declines in language or mathematics scores, ruling out changes in overall student ability or instruction quality as explanations. These results highlight the welfare costs of politicized education and show how state control over curricular content can generate persistent economic distortions.</p>
+          <button class="toggle" type="button" hidden>展开</button>
+        </div>
+      </article>
+
+      <!-- THIRD WP -->
+      <article class="item">
+        <div class="thumb">
+          <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
+        </div>
+        <div class="meta">
+          <a class="title" href="/paper/Writing_Sample_Fertilizer.pdf" target="_blank" rel="noopener">
+            Land Titling, Selection, and Fertilizer Use Efficiency in China
+          </a>
+          <div class="venue">Working paper, 2025</div>
+          <p class="summary">Excess fertilizer use is a major source of non-point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference-in-differences with multiple periods, linked to a household panel and environmental data. Clarifying land tenure reduces chemical fertilizer intensity by about 8.35% and shifts inputs toward organic alternatives. Roughly 60% of the decline is an incentive effect and 40% a reallocation effect. County-level N₂O emissions fall by about 2.82%, close to the 2.92% predicted from the input decline, and water quality indicators improve.</p>
+          <button class="toggle" type="button" hidden>展开</button>
+        </div>
+      </article>
+
+      <!-- Working Program (占位) -->
+      <h3>Working Program</h3>
+      <article class="item">
+        <div class="thumb">
+          <img src="/images/research/wprog-1.jpg" alt="Working program figure">
+        </div>
+        <div class="meta">
+          <a class="title" href="#" onclick="return false;">Project Title Goes Here</a>
+          <div class="venue">Research program · in progress</div>
+          <p class="summary">Brief description of the program goals, setting, and planned design or early findings.</p>
+          <button class="toggle" type="button" hidden>展开</button>
+        </div>
+      </article>
     </section>
   </main>
 
-  <footer>
-    © <span id="y"></span> Mingzhe Chou
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+  <footer>© <span id="y"></span> Mingzhe Chou</footer>
+
+  <script>
+    // 年份
+    document.getElementById('y').textContent=new Date().getFullYear();
+
+    // 摘要按左图高度折叠
+    (function(){
+      function clampAll(){
+        const wide = window.innerWidth>720; // 手机端不折叠
+        document.querySelectorAll('.item').forEach(function(card){
+          const imgBox = card.querySelector('.thumb');
+          const para   = card.querySelector('.summary');
+          const btn    = card.querySelector('.toggle');
+          if(!imgBox || !para || !btn) return;
+
+          para.style.maxHeight='none';
+          para.classList.remove('collapsed');
+          btn.hidden=true; btn.textContent='展开';
+
+          if(!wide) return;
+
+          const h = imgBox.clientHeight;
+          if(para.scrollHeight > h){
+            para.style.maxHeight = h + 'px';
+            para.classList.add('collapsed');
+            btn.hidden = false;
+          }
+          btn.dataset.clamp = h;
+        });
+      }
+
+      document.addEventListener('click', function(e){
+        if(!e.target.classList.contains('toggle')) return;
+        const btn  = e.target;
+        const para = btn.previousElementSibling;
+        if(para.classList.contains('collapsed')){
+          para.style.maxHeight = para.scrollHeight + 'px';
+          para.classList.remove('collapsed');
+          btn.textContent = '收起';
+        }else{
+          const h = +btn.dataset.clamp || 0;
+          para.style.maxHeight = h + 'px';
+          para.classList.add('collapsed');
+          btn.textContent = '展开';
+        }
+      });
+
+      window.addEventListener('load', clampAll);
+      window.addEventListener('resize', clampAll);
+    })();
+  </script>
 </body>
 </html>
