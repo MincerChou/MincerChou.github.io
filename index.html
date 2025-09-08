@@ -164,13 +164,15 @@ Excess fertilizer use is a major source of non point pollution in agriculture. T
 
           if(!wide) return;
 
-          const h = imgBox.clientHeight;
-          if(para.scrollHeight > h){
-            para.style.maxHeight = h + 'px';
-            para.classList.add('collapsed');
-            btn.hidden = false;
-          }
-          btn.dataset.clamp = h;
+const h = imgBox.clientHeight;
+const cap = Math.round(h * 0.85);   // 图高的 85% 当上限
+if(para.scrollHeight > cap){
+  para.style.maxHeight = cap + 'px';
+  para.classList.add('collapsed');
+  btn.hidden = false;
+}
+btn.dataset.clamp = cap;
+
         });
       }
 
