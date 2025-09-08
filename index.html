@@ -50,6 +50,11 @@
       .item{grid-template-columns:1fr}
     }
     footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
+        .thumb.contain img {
+      object-fit: contain;
+      background: #fff;
+    }
+
   </style>
 </head>
 <body>
@@ -111,9 +116,10 @@
 
       <!-- THIRD WP -->
       <article class="item">
-        <div class="thumb">
-          <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
-        </div>
+          <div class="thumb contain">
+  <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
+          </div>
+
         <div class="meta">
           <a class="title" href="/paper/Writing_Sample_Fertilizer.pdf" target="_blank" rel="noopener">
             Land Titling, Selection, and Fertilizer Use Efficiency in China
