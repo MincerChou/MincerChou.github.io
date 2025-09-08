@@ -90,7 +90,7 @@
           </a>
           <div class="venue">Working paper, 2024</div>
           <p class="summary">How promotion incentives shape both reported and real economic performance in Chinese bureaucrats? Using the age rule that governs eligibility for promotion, we estimate a sharp regression discontinuity. To separate reporting from substance, we validate reported growth with night time lights and construct lights-implied real growth. Leaders just below the threshold report higher GDP and also raise real activity. The discontinuity implies about a four percentage point increase in reported growth and a similar rise in real growth. Manipulation is concentrated among unconnected officials and in economically lagging places.</p>
-          <button class="toggle" type="button" hidden>展开</button>
+          <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
 
@@ -105,7 +105,7 @@
           </a>
           <div class="venue">Working paper, 2025</div>
           <p class="summary">This paper studies the economic consequences of ideologically oriented schooling in an authoritarian setting. Between 2004 and 2010, China introduced a new high school politics curriculum with the explicit goal of shaping students’ ideology. Using the staggered rollout of the reform across provinces and comparing adjacent student cohorts, I estimate its causal effects on financial knowledge, preferences, and behavior. Three main findings emerge. First, exposure to the reformed curriculum durably reduces financial literacy, measured by standardized questions on basic economic and financial concepts. Second, affected students exhibit higher relative risk aversion, lower participation in equity markets, and a reduced propensity to engage in entrepreneurship. Third, placebo analyses show no similar patterns for cohorts that did not attend high school, and no declines in language or mathematics scores, ruling out changes in overall student ability or instruction quality as explanations. These results highlight the welfare costs of politicized education and show how state control over curricular content can generate persistent economic distortions.</p>
-          <button class="toggle" type="button" hidden>展开</button>
+          <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
 
@@ -119,8 +119,10 @@
             Land Titling, Selection, and Fertilizer Use Efficiency in China
           </a>
           <div class="venue">Working paper, 2025</div>
-          <p class="summary">Excess fertilizer use is a major source of non-point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference-in-differences with multiple periods, linked to a household panel and environmental data. Clarifying land tenure reduces chemical fertilizer intensity by about 8.35% and shifts inputs toward organic alternatives. Roughly 60% of the decline is an incentive effect and 40% a reallocation effect. County-level N₂O emissions fall by about 2.82%, close to the 2.92% predicted from the input decline, and water quality indicators improve.</p>
-          <button class="toggle" type="button" hidden>展开</button>
+          <p class="summary">
+Excess fertilizer use is a major source of non point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference in differences methods with multiple periods, linked to a household panel from the National Fixed Point Survey and environmental data. Three findings emerge. First, clarifying land tenure reduces chemical fertilizer intensity at the household level by about 8.35%, and it induces shifts toward organic inputs, both on the extensive and the intensive margins. Second, a decomposition shows that roughly 60% of the decline is an incentive effect from secure tenure and about 40% is a reallocation effect as land moves toward more productive operators. Third, county level nitrous oxide emissions fall by about 2.82% after certification, closely matching a 2.92% reduction predicted from the estimated decline in fertilizer intensity, and water quality indicators improve in treated areas. Correspondingly, the reduction in fertilizer use is accompanied by significant improvements in related water quality indicators, particularly a decline in COD<sub>Mn</sub> and NH<sub>4</sub>-N. The results indicate that property rights reforms can mitigate agricultural pollution by correcting resource misallocation and by changing input choices within farms.
+</p>
+
         </div>
       </article>
 
@@ -134,7 +136,7 @@
           <a class="title" href="#" onclick="return false;">Project Title Goes Here</a>
           <div class="venue">Research program · in progress</div>
           <p class="summary">Brief description of the program goals, setting, and planned design or early findings.</p>
-          <button class="toggle" type="button" hidden>展开</button>
+          <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
     </section>
@@ -158,7 +160,7 @@
 
           para.style.maxHeight='none';
           para.classList.remove('collapsed');
-          btn.hidden=true; btn.textContent='展开';
+          btn.hidden=true; btn.textContent='Read More';
 
           if(!wide) return;
 
@@ -179,12 +181,12 @@
         if(para.classList.contains('collapsed')){
           para.style.maxHeight = para.scrollHeight + 'px';
           para.classList.remove('collapsed');
-          btn.textContent = '收起';
+          btn.textContent = 'Read Less';
         }else{
           const h = +btn.dataset.clamp || 0;
           para.style.maxHeight = h + 'px';
           para.classList.add('collapsed');
-          btn.textContent = '展开';
+          btn.textContent = 'Read More';
         }
       });
 
