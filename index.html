@@ -7,31 +7,26 @@
   <style>
     :root{--max:1250px}
     *{box-sizing:border-box}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6;color:#1a1a1a}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.6;color:#1a1a1a;background:#fafafa}
     a{color:#0b57d0;text-decoration:none} a:hover{text-decoration:underline}
-    header{border-bottom:1px solid #eee}
+    header{border-bottom:1px solid #eee;background:#fff;position:sticky;top:0;z-index:10}
     nav{max-width:var(--max);margin:0 auto;display:flex;gap:24px;align-items:center;padding:14px 16px}
     nav a{font-weight:600;color:#222}
     main{max-width:var(--max);margin:28px auto;padding:0 16px}
     h1{margin:.2em 0}
     h2{margin:1.2em 0 .2em}
     .muted{color:#666}
-    .pill{display:inline-block;border:1px solid #ddd;border-radius:999px;padding:.15em .6em;margin-right:.5em;font-size:.9em;color:#444}
+    .pill{display:inline-block;border:1px solid #ddd;border-radius:999px;padding:.15em .6em;margin-right:.5em;font-size:.9em;color:#444;background:#fff}
 
-    /* 卡片布局 */
-    .item{
-      display:grid;
-      grid-template-columns:350px minmax(0,1fr);
-      gap:24px;
-      align-items:start;
-      margin:18px 0;
-      padding:12px;
-      border:1px solid #eee;
-      border-radius:12px;
-      background:#fff;
-    }
+    /* 顶部头像 + 简介 */
+    .hero{display:grid;grid-template-columns:160px minmax(0,1fr);gap:24px;align-items:center;margin-top:8px}
+    .avatar{width:160px;height:160px;border-radius:14px;overflow:hidden;border:1px solid #eee;box-shadow:0 2px 12px rgba(0,0,0,.04);background:#fff}
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* 卡片布局（Working Paper / Work in Progress 共用） */
+    .item{display:grid;grid-template-columns:350px minmax(0,1fr);gap:24px;align-items:start;margin:18px 0;padding:12px;border:1px solid #eee;border-radius:12px;background:#fff}
     .thumb{aspect-ratio:4/3;background:#f7f7f7;border:1px solid #eee;border-radius:10px;overflow:hidden}
-    /* 改这里：统一完整显示，不裁剪 */
+    /* 统一完整显示，不裁剪 */
     .thumb img{width:100%;height:100%;object-fit:contain;background:#fff;display:block}
 
     .meta .title{font-weight:700;color:inherit;text-decoration:none}
@@ -40,20 +35,14 @@
 
     /* 摘要折叠 */
     .summary{overflow:hidden;position:relative;transition:max-height .2s ease}
-    .summary.collapsed::after{
-      content:"";position:absolute;left:0;right:0;bottom:0;height:3em;
-      background:linear-gradient(transparent,#fff)
-    }
+    .summary.collapsed::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3em;background:linear-gradient(transparent,#fff)}
     .toggle{margin-top:.4rem;padding:.25rem .6rem;border:1px solid #ddd;border-radius:999px;background:#fff;cursor:pointer;font-size:.9rem}
     .toggle[hidden]{display:none}
 
-    @media (max-width:720px){
-      .item{grid-template-columns:1fr}
-    }
-    footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
+    @media (max-width:900px){.item{grid-template-columns:1fr}}
+    @media (max-width:720px){.hero{grid-template-columns:1fr;gap:14px}.avatar{width:120px;height:120px;justify-self:start}}
 
-    /* 可留存，不影响效果（已全局 contain） */
-    .thumb.contain img { object-fit: contain; background: #fff; }
+    footer{max-width:var(--max);margin:40px auto 24px;color:#777;border-top:1px solid #eee;padding:16px}
   </style>
 </head>
 <body>
@@ -67,15 +56,21 @@
   <main>
     <!-- HOME -->
     <section id="home">
-      <h1>Mingzhe (Mincer) Chou</h1>
-      <div class="muted">Harris School of Public Policy, University of Chicago · mincerchou@gmail.com</div>
-      <p>I am a Master student in Economics. I have broad research interests; my current project focuses on public economics, urban/spatial economics, and agricultural economics.</p>
-      <p>
-        <!-- <a class="pill" href="https://scholar.google.com/citations?user=PS_CX0AAAAAJ" target="_blank" rel="noopener">Google Scholar</a> -->
-        <a class="pill" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=7676487" target="_blank" rel="noopener">SSRN</a>
-        <a class="pill" href="https://github.com/MincerChou" target="_blank" rel="noopener">GitHub</a>
-        <a class="pill" href="/files/cv.pdf" target="_blank" rel="noopener">CV</a>
-      </p>
+      <div class="hero">
+        <div class="avatar">
+          <img src="/images/photo.png" alt="Portrait of Mingzhe (Mincer) Chou" loading="eager">
+        </div>
+        <div>
+          <h1>Mingzhe (Mincer) Chou</h1>
+          <div class="muted">Harris School of Public Policy, University of Chicago · mincerchou@gmail.com</div>
+          <p>I am a Master student at the University of Chicago (Harris School of Public Policy). I have broad research interests in economics; my current projects focus on public economics, urban/spatial economics, and agricultural economics.</p>
+          <p>
+            <a class="pill" href="https://papers.ssrn.com/Sol3/Cf_Dev/AbsByAuth.cfm?per_id=7676487" target="_blank" rel="noopener">SSRN</a>
+            <a class="pill" href="https://github.com/MincerChou" target="_blank" rel="noopener">GitHub</a>
+            <a class="pill" href="/files/cv.pdf" target="_blank" rel="noopener">CV</a>
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- RESEARCH -->
@@ -86,14 +81,14 @@
       <!-- FIRST WP -->
       <article class="item">
         <div class="thumb">
-          <img src="/images/f_martinez.png" alt="Incentives, Manipulation, and Growth – figure">
+          <img src="/images/f_martinez.png" alt="Incentives, Manipulation, and Growth – figure" loading="lazy">
         </div>
         <div class="meta">
           <a class="title" href="/paper/GDP_Manipulation.pdf" target="_blank" rel="noopener">
             Incentives, Manipulation, and Growth: Performance Metrics and Bureaucratic Behavior in China
           </a>
           <div class="venue">Working paper, 2024</div>
-          <p class="summary">How promotion incentives shape both reported and real economic performance in Chinese bureaucrats? Using the age rule that governs eligibility for promotion, we estimate a sharp regression discontinuity. To separate reporting from substance, we validate reported growth with night time lights and construct lights-implied real growth. Leaders just below the threshold report higher GDP and also raise real activity. The discontinuity implies about a four percentage point increase in reported growth and a similar rise in real growth. Manipulation is concentrated among unconnected officials and in economically lagging places.</p>
+          <p class="summary">How do promotion incentives shape both reported and real economic performance for Chinese bureaucrats? Using the age rule that governs eligibility for promotion, we estimate a sharp regression discontinuity. To separate reporting from substance, we validate reported growth with night-time lights and construct lights-implied real growth. Leaders just below the threshold report higher GDP and also raise real activity. The discontinuity implies about a four percentage point increase in reported growth and a similar rise in real growth. Manipulation is concentrated among unconnected officials and in economically lagging places.</p>
           <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
@@ -101,7 +96,7 @@
       <!-- SECOND WP -->
       <article class="item">
         <div class="thumb">
-          <img src="/images/cohortstager.png" alt="Ideological Curriculum Reform – figure">
+          <img src="/images/cohortstager.png" alt="Ideological Curriculum Reform – figure" loading="lazy">
         </div>
         <div class="meta">
           <a class="title" href="/paper/Curriculum_drafting.pdf" target="_blank" rel="noopener">
@@ -115,52 +110,51 @@
 
       <!-- THIRD WP -->
       <article class="item">
-        <div class="thumb contain">
-          <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure">
+        <div class="thumb">
+          <img src="/images/Fertilizer_Figure.png" alt="Fertilizer – figure" loading="lazy">
         </div>
         <div class="meta">
           <a class="title" href="/paper/Writing_Sample_Fertilizer.pdf" target="_blank" rel="noopener">
             Land Titling, Selection, and Fertilizer Use Efficiency in China
           </a>
           <div class="venue">Working paper, 2025</div>
-          <p class="summary">
-Excess fertilizer use is a major source of non point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference in differences methods with multiple periods, linked to a household panel from the National Fixed Point Survey and environmental data. Three findings emerge. First, clarifying land tenure reduces chemical fertilizer intensity at the household level by about 8.35%, and it induces shifts toward organic inputs, both on the extensive and the intensive margins. Second, a decomposition shows that roughly 60% of the decline is an incentive effect from secure tenure and about 40% is a reallocation effect as land moves toward more productive operators. Third, county level nitrous oxide emissions fall by about 2.82% after certification, closely matching a 2.92% reduction predicted from the estimated decline in fertilizer intensity, and water quality indicators improve in treated areas. Correspondingly, the reduction in fertilizer use is accompanied by significant improvements in related water quality indicators, particularly a decline in COD<sub>Mn</sub> and NH<sub>4</sub>-N. The results indicate that property rights reforms can mitigate agricultural pollution by correcting resource misallocation and by changing input choices within farms.
-</p>
+          <p class="summary">Excess fertilizer use is a major source of non-point pollution in agriculture. This paper studies whether strengthening rural land rights can reduce fertilizer overuse in China. I exploit the staggered rollout of the national land certification program from 2013 to 2020 across counties and estimate causal effects using difference-in-differences methods with multiple periods, linked to a household panel from the National Fixed Point Survey and environmental data. Three findings emerge. First, clarifying land tenure reduces chemical fertilizer intensity at the household level by about 8.35%, and it induces shifts toward organic inputs, both on the extensive and the intensive margins. Second, a decomposition shows that roughly 60% of the decline is an incentive effect from secure tenure and about 40% is a reallocation effect as land moves toward more productive operators. Third, county-level nitrous oxide emissions fall by about 2.82% after certification, closely matching a 2.92% reduction predicted from the estimated decline in fertilizer intensity, and water quality indicators improve in treated areas, particularly COD<sub>Mn</sub> and NH<sub>4</sub>-N. The results indicate that property rights reforms can mitigate agricultural pollution by correcting resource misallocation and by changing input choices within farms.</p>
           <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
 
-
-      <!-- Forth WP -->
+      <!-- FOURTH WP -->
       <article class="item">
-        <div class="thumb contain">
-          <img src="/images/TWFE_delay.png" alt="congestion – figure">
+        <div class="thumb">
+          <img src="/images/TWFE_delay.png" alt="High-speed rail and congestion – figure" loading="lazy">
         </div>
         <div class="meta">
           <a class="title" href="/paper/Writing_Sample_Fertilizer.pdf" target="_blank" rel="noopener">
             High-Speed Rail Expansion and Inter-City Highway Congestion
           </a>
           <div class="venue">Working paper, 2025 — Under review at <em>Journal of Economic Geography</em></div>
-          <p class="summary">
-This paper studies the impact of high-speed rail (HSR) expansion on highway congestion in China. I exploit the staggered rollout of HSR services across cities between 2013 and 2019. Employing a staggered difference-in-differences strategy, I find that HSR connectivity significantly and persistently reduces highway congestion: congested road length declines by 5.8% and a congestion delay index based on travel speed decreases by 6.7%. Mechanism analysis reveals substantial modal substitution from intercity road passenger transport to rail, while freight traffic in rail remains largely unchanged. The effect is strongest in cities where highways are located farther from population centers and serve primarily long-distance travel. These findings suggest that strategic development of alternative transportation modes can effectively alleviate highway congestion.
-</p>
+          <p class="summary">This paper studies the impact of high-speed rail (HSR) expansion on highway congestion in China. I exploit the staggered rollout of HSR services across cities between 2013 and 2019. Employing a staggered difference-in-differences strategy, I find that HSR connectivity significantly and persistently reduces highway congestion: congested road length declines by 5.8% and a congestion delay index based on travel speed decreases by 6.7%. Mechanism analysis reveals substantial modal substitution from intercity road passenger transport to rail, while freight traffic in rail remains largely unchanged. The effect is strongest in cities where highways are located farther from population centers and serve primarily long-distance travel. These findings suggest that strategic development of alternative transportation modes can effectively alleviate highway congestion.</p>
           <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
 
-      <!-- Working Program (占位) -->
-      <h3>Working Program</h3>
+      <!-- WORK IN PROGRESS -->
+      <h3>Work in Progress</h3>
+      <!-- NEW WIP #1 -->
       <article class="item">
         <div class="thumb">
-          <img src="/images/research/wprog-1.jpg" alt="Working program figure">
+          <img src="/images/gini.png" alt="Gini and assortative matching – illustration" loading="lazy">
         </div>
         <div class="meta">
-          <a class="title" href="#" onclick="return false;">Project Title Goes Here</a>
-          <div class="venue">Research program · in progress</div>
-          <p class="summary">Brief description of the program goals, setting, and planned design or early findings.</p>
+          <a class="title" href="#" onclick="return false;">Educational Assortative Matching and Inequality Across Countries</a>
+          <div class="venue">Work in progress, 2025</div>
+          <p class="summary">
+            Educational assortative matching is a key determinant of inequality, yet its cross-country variation and causal mechanisms remain poorly understood. Using harmonized micro census data from IPUMS International covering 93 countries from 1960 to 2020, I compute educational assortative matching intensity and analyze its relationship with multiple dimensions of inequality. I find that countries with stronger assortative matching exhibit significantly higher levels of cross-sectional income inequality, lower intergenerational income mobility, and reduced intergenerational educational mobility. Quantitatively, an interquartile change in matching intensity explains 44% of the standard deviation in cross-country Gini coefficients, 34% of intergenerational income elasticity variation, and 56% of educational transmission coefficient differences. I develop a theoretical framework that extends the Becker–Tomes model to incorporate marriage matching, where assortative matching amplifies intergenerational human capital transmission through concentrated educational investments within households. The model generates the empirically observed Gatsby curve relationship, with educational assortative matching explaining 24.4% of the cross-country association between income inequality and intergenerational mobility. These findings establish educational assortative matching as a significant driver of inequality persistence across countries.
+          </p>
           <button class="toggle" type="button" hidden>Read More</button>
         </div>
       </article>
+
     </section>
   </main>
 
@@ -168,12 +162,12 @@ This paper studies the impact of high-speed rail (HSR) expansion on highway cong
 
   <script>
     // 年份
-    document.getElementById('y').textContent=new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-    // 摘要按左图高度折叠
+    // 摘要按左图高度折叠（手机端不折叠）
     (function(){
       function clampAll(){
-        const wide = window.innerWidth>720; // 手机端不折叠
+        const wide = window.innerWidth > 720;
         document.querySelectorAll('.item').forEach(function(card){
           const imgBox = card.querySelector('.thumb');
           const para   = card.querySelector('.summary');
@@ -219,4 +213,5 @@ This paper studies the impact of high-speed rail (HSR) expansion on highway cong
   </script>
 </body>
 </html>
+
 
